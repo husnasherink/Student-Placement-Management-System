@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Placement Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #123b70;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #d1d5db;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Student Profile</h1>
+    <p>Student Placement Management System</p>
+</header>
+
+<div class="container">
+
+    <h2>Personal Details</h2>
+
+    <form id="profileForm">
+
+        <label for="name">Student Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="department">Department</label>
+        <input type="text" id="department" value="Computer Science Engineering" required>
+
+        <label for="college">College Name</label>
+        <input type="text" id="college" placeholder="Enter your college name" required>
+
+        <label for="skills">Skills</label>
+        <textarea id="skills" rows="3" placeholder="Example: C, Python, HTML, CSS"></textarea>
+
+        <button type="submit">Save Profile</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a class="back" href="dashboard.html">← Back to Dashboard</a>
+
+</div>
+
+<script>
+    document.getElementById("profileForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const profile = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            department: document.getElementById("department").value,
+            college: document.getElementById("college").value,
+            skills: document.getElementById("skills").value
+        };
+
+        localStorage.setItem("studentProfile", JSON.stringify(profile));
+
+        document.getElementById("message").textContent =
+            "Profile saved successfully!";
+    });
+
+    window.addEventListener("DOMContentLoaded", function() {
+        const saved = localStorage.getItem("studentProfile");
+
+        if (saved) {
+            const profile = JSON.parse(saved);
+
+            document.getElementById("name").value = profile.name;
+            document.getElementById("email").value = profile.email;
+            document.getElementById("department").value = profile.department;
+            document.getElementById("college").value = profile.college;
+            document.getElementById("skills").value = profile.skills;
+        }
+    });
+</script>
+
+</body>
+</html>

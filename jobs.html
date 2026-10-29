@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Opportunities</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:25px}
+.container{max-width:850px;margin:auto;background:white;padding:25px;border-radius:12px}
+h1{color:#4338ca;text-align:center}
+.job{border:1px solid #ddd;padding:18px;margin:15px 0;border-radius:10px}
+button{background:#4338ca;color:white;border:0;padding:10px 18px;border-radius:6px;cursor:pointer}
+a{color:#4338ca}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Job Opportunities</h1>
+<p>Explore sample job opportunities and apply for positions.</p>
+
+<div class="job">
+<h3>Web Development Intern</h3>
+<p><b>Skills:</b> HTML, CSS, JavaScript</p>
+<p><b>Type:</b> Internship</p>
+<button onclick="applyJob('Web Development Intern')">Apply Now</button>
+</div>
+
+<div class="job">
+<h3>Python Developer Intern</h3>
+<p><b>Skills:</b> Python, Programming Basics</p>
+<p><b>Type:</b> Internship</p>
+<button onclick="applyJob('Python Developer Intern')">Apply Now</button>
+</div>
+
+<div class="job">
+<h3>Software Developer Trainee</h3>
+<p><b>Skills:</b> C, Problem Solving, Git</p>
+<p><b>Type:</b> Entry Level</p>
+<button onclick="applyJob('Software Developer Trainee')">Apply Now</button>
+</div>
+
+<p id="message"></p>
+<a href="dashboard.html">Back to Dashboard</a>
+</div>
+
+<script>
+function applyJob(jobName){
+    let applications = JSON.parse(localStorage.getItem("applications") || "[]");
+    if(applications.includes(jobName)){
+        document.getElementById("message").textContent = "You have already applied for this job.";
+        return;
+    }
+    applications.push(jobName);
+    localStorage.setItem("applications", JSON.stringify(applications));
+    document.getElementById("message").textContent = "Application submitted successfully!";
+}
+</script>
+</body>
+</html>

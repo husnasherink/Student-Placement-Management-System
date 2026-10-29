@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Upload - Placement Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 30px 15px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px #cccccc;
+        }
+        h1 { color: #4338ca; }
+        button {
+            background: #4338ca;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 8px;
+        }
+        #message { margin-top: 15px; }
+        #preview {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #4338ca;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Upload</h1>
+        <p>Select your resume in PDF format.</p>
+
+        <input type="file" id="resumeFile" accept=".pdf,application/pdf">
+        <br>
+        <button onclick="previewResume()">Preview Resume</button>
+
+        <p id="message"></p>
+        <iframe id="preview" title="Resume PDF Preview"></iframe>
+
+        <a href="myresume.html">Open My Resume Template</a>
+        <a href="dashboard.html">Back to Dashboard</a>
+    </div>
+
+    <script>
+        let resumeURL = null;
+
+        function previewResume() {
+            const file = document.getElementById("resumeFile").files[0];
+            const message = document.getElementById("message");
+            const preview = document.getElementById("preview");
+
+            if (!file) {
+                message.style.color = "red";
+                message.textContent = "Please select a PDF resume first.";
+                return;
+            }
+
+            if (file.type !== "application/pdf") {
+                message.style.color = "red";
+                message.textContent = "Please select a valid PDF file.";
+                return;
+            }
+
+            if (resumeURL) URL.revokeObjectURL(resumeURL);
+
+            resumeURL = URL.createObjectURL(file);
+            preview.src = resumeURL;
+            preview.style.display = "block";
+
+            message.style.color = "green";
+            message.textContent = "Resume selected: " + file.name;
+        }
+    </script>
+</body>
+</html>

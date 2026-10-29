@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Placement Management System - Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            color: #1f2937;
+        }
+
+        header {
+            background: #4338ca;
+            color: white;
+            padding: 22px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px #d1d5db;
+        }
+
+        .welcome h2 {
+            color: #4338ca;
+            margin-top: 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #d1d5db;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #4338ca;
+            margin-top: 0;
+        }
+
+        .card p {
+            min-height: 40px;
+            line-height: 1.5;
+        }
+
+        button {
+            background: #4338ca;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #312e81;
+        }
+
+        .logout {
+            display: block;
+            margin: 28px auto;
+            max-width: 220px;
+            background: #4338ca;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Placement Management System</h1>
+        <p>Student Dashboard</p>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <h2>Welcome to Your Dashboard!</h2>
+            <p>Manage your profile, prepare your resume, explore job opportunities, and track your applications.</p>
+        </section>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Student Profile</h3>
+                <p>View and update your student information.</p>
+                <button type="button" onclick="window.location.href='./profile.html'">
+                    Student Profile
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>Resume</h3>
+                <p>Open your resume page and preview your resume.</p>
+                <button type="button" onclick="window.location.href='./resume.html'">
+                    Resume
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>Job Opportunities</h3>
+                <p>Explore available internships and job opportunities.</p>
+                <button type="button" onclick="window.location.href='./jobs.html'">
+                    Job Opportunities
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>Applications</h3>
+                <p>View the jobs you have applied for.</p>
+                <button type="button" onclick="window.location.href='./applications.html'">
+                    My Applications
+                </button>
+            </div>
+
+        </section>
+
+        <button class="logout" type="button" onclick="window.location.href='./index.html'">
+            Back to Home
+        </button>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Student Placement Management System</p>
+    </footer>
+
+</body>
+</html>

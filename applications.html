@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Applications</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:25px}
+.container{max-width:850px;margin:auto;background:white;padding:25px;border-radius:12px}
+h1{color:#4338ca;text-align:center}
+li{padding:12px;margin:10px 0;background:#f3f4f6;border-radius:6px}
+a{color:#4338ca}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>My Applications</h1>
+<p>Jobs you have applied for are listed below.</p>
+<ul id="applicationList"></ul>
+<p id="emptyMessage"></p>
+<a href="jobs.html">Browse Job Opportunities</a>
+<a href="dashboard.html">Back to Dashboard</a>
+</div>
+
+<script>
+const applications = JSON.parse(localStorage.getItem("applications") || "[]");
+const list = document.getElementById("applicationList");
+const emptyMessage = document.getElementById("emptyMessage");
+
+if(applications.length === 0){
+    emptyMessage.textContent = "No applications yet. Visit Job Opportunities and click Apply Now.";
+} else {
+    applications.forEach(job => {
+        const item = document.createElement("li");
+        item.textContent = job + " — Application Submitted";
+        list.appendChild(item);
+    });
+}
+</script>
+</body>
+</html>
