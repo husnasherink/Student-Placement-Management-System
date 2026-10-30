@@ -1,1 +1,1 @@
-# Student Placement Management Syste
+# Student Placement Management System.
